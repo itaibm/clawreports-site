@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClawReports — Signal, not noise.</title>
-<meta name="description" content="ClawReports — automated reporting, in development.">
+<title>ClawReports — Investigation reports, backed by evidence.</title>
+<meta name="description" content="ClawReports runs OSINT background checks, corporate due diligence, and documentary family research — every claim traced to a citation and checked by two independent AI models before delivery.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -32,7 +32,6 @@
     position: relative;
   }
 
-  /* grain overlay */
   body::before{
     content:"";
     position: fixed; inset:0;
@@ -42,7 +41,6 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 
-  /* faint scanline grid */
   body::after{
     content:"";
     position: fixed; inset:0;
@@ -107,11 +105,10 @@
     grid-template-columns: 1.15fr 0.85fr;
     gap: 40px;
     align-items: center;
-    min-height: 82vh;
-    padding: 40px 0 60px;
+    padding: 60px 0 50px;
   }
   @media (max-width: 880px){
-    main{ grid-template-columns: 1fr; min-height: auto; padding-top: 20px; }
+    main{ grid-template-columns: 1fr; padding-top: 30px; }
   }
 
   .kicker{
@@ -130,7 +127,7 @@
   h1{
     font-family: var(--mono);
     font-weight: 800;
-    font-size: clamp(48px, 8vw, 92px);
+    font-size: clamp(48px, 8vw, 88px);
     line-height: 0.96;
     letter-spacing: -0.02em;
     margin: 0 0 6px;
@@ -150,35 +147,16 @@
   .tagline{
     font-family: var(--serif);
     font-style: italic;
-    font-size: clamp(19px, 2.4vw, 26px);
+    font-size: clamp(18px, 2.2vw, 24px);
     color: var(--paper-dim);
-    max-width: 46ch;
+    max-width: 50ch;
     margin: 18px 0 34px;
-    line-height: 1.45;
+    line-height: 1.5;
   }
   .tagline em{ color: var(--paper); font-style: normal; border-bottom: 1px solid var(--amber-dim); }
 
-  form{
-    display:flex;
-    gap: 0;
-    max-width: 460px;
-    border: 1px solid var(--line);
-    background: var(--bg-panel);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  form input[type=email]{
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--paper);
-    font-family: var(--mono);
-    font-size: 14px;
-    padding: 16px 18px;
-  }
-  form input::placeholder{ color: #5c5a4e; }
-  form button{
+  .cta-row{ display:flex; align-items:center; gap: 18px; flex-wrap: wrap; }
+  .btn{
     font-family: var(--mono);
     font-weight: 700;
     font-size: 13px;
@@ -187,34 +165,36 @@
     background: var(--amber);
     color: #1a1204;
     border: none;
-    padding: 0 22px;
+    padding: 16px 26px;
+    border-radius: 3px;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
     transition: background .15s ease, transform .1s ease;
   }
-  form button:hover{ background: #ffc45c; }
-  form button:active{ transform: scale(0.97); }
+  .btn:hover{ background: #ffc45c; }
+  .btn:active{ transform: scale(0.97); }
 
   .note{
     font-family: var(--mono);
     font-size: 12px;
     color: var(--paper-dim);
-    margin-top: 14px;
     letter-spacing: 0.02em;
   }
   .note a{ color: var(--green); text-decoration: none; border-bottom: 1px dotted var(--green); }
 
-  /* decorative report panel */
+  /* decorative pipeline panel */
   .panel{
     background: var(--bg-panel);
     border: 1px solid var(--line);
     border-radius: 4px;
-    padding: 22px;
+    padding: 24px;
     position: relative;
     transform: rotate(1.2deg);
     box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
   }
   .panel::before{
-    content:"REPORT_04 // STATUS: BUILDING";
+    content:"PIPELINE // GATING RULES ENFORCED";
     position:absolute;
     top:-11px; left: 18px;
     background: var(--bg);
@@ -233,37 +213,85 @@
     padding-bottom: 12px;
     border-bottom: 1px dashed var(--line);
   }
-  .bars{
-    display:flex; align-items:flex-end; gap: 8px;
-    height: 130px;
-    margin-bottom: 18px;
+  .steps{ display:flex; flex-direction:column; gap: 0; }
+  .step{
+    display:flex; align-items:flex-start; gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--line);
   }
-  .bars i{
-    flex:1;
-    background: linear-gradient(180deg, var(--amber) 0%, var(--amber-dim) 100%);
-    opacity: 0.85;
-    border-radius: 2px 2px 0 0;
-    animation: rise 1.4s cubic-bezier(.2,.8,.2,1) both;
+  .step:last-child{ border-bottom: none; }
+  .step .n{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--bg);
+    background: var(--green);
+    width: 22px; height:22px;
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+    font-weight:700;
   }
-  .bars i:nth-child(even){ background: linear-gradient(180deg, var(--green) 0%, #234a17 100%); }
-  @keyframes rise{ from{ transform: scaleY(0); transform-origin: bottom; } to{ transform: scaleY(1); } }
-  .bars i:nth-child(1){height:38%; animation-delay:.05s}
-  .bars i:nth-child(2){height:62%; animation-delay:.12s}
-  .bars i:nth-child(3){height:28%; animation-delay:.19s}
-  .bars i:nth-child(4){height:81%; animation-delay:.26s}
-  .bars i:nth-child(5){height:54%; animation-delay:.33s}
-  .bars i:nth-child(6){height:95%; animation-delay:.4s}
-  .bars i:nth-child(7){height:44%; animation-delay:.47s}
-  .bars i:nth-child(8){height:70%; animation-delay:.54s}
+  .step .t{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--paper);
+    margin-bottom: 3px;
+  }
+  .step .d{
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--paper-dim);
+    line-height: 1.4;
+  }
 
-  .rows{ display:flex; flex-direction:column; gap:9px; }
-  .row{
-    display:flex; align-items:center; gap: 10px;
-    font-family: var(--mono); font-size: 11px; color: var(--paper-dim);
+  .services{
+    padding: 20px 0 70px;
+    border-top: 1px solid var(--line);
   }
-  .row .lbl{ width: 92px; flex-shrink:0; }
-  .row .track{ flex:1; height:5px; background:#1c1f18; border-radius:3px; overflow:hidden; }
-  .row .fill{ height:100%; background: var(--green); border-radius:3px; }
+  .services-head{
+    font-family: var(--mono);
+    color: var(--green);
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 46px 0 30px;
+  }
+  .services-head::before{ content:"// "; color: var(--paper-dim); }
+  .cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 880px){
+    .cards{ grid-template-columns: 1fr; }
+  }
+  .card{
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 26px;
+  }
+  .card .tag{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 14px;
+  }
+  .card h3{
+    font-family: var(--mono);
+    font-size: 18px;
+    margin: 0 0 12px;
+    color: var(--paper);
+  }
+  .card p{
+    font-family: var(--serif);
+    font-size: 14.5px;
+    color: var(--paper-dim);
+    line-height: 1.55;
+    margin: 0;
+  }
 
   footer{
     padding: 30px 0 40px;
@@ -284,37 +312,79 @@
 <div class="wrap">
   <header>
     <div class="mark"><span class="dot"></span>CLAWREPORTS</div>
-    <div class="badge">In Development</div>
+    <div class="badge">Evidence-Based Reports</div>
   </header>
 
   <main>
     <div>
-      <p class="kicker">Status log — build phase 01</p>
+      <p class="kicker">Investigation reports, not guesswork</p>
       <h1>Claw<br>Reports<span class="cursor"></span></h1>
-      <p class="tagline">Automated reporting that reads the mess so you don't have to — <em>signal extracted, noise discarded</em>, delivered on your schedule.</p>
+      <p class="tagline">Background checks, corporate due diligence, and documentary family research — <em>every claim traced to a citation</em>, cross-checked by two independent AI models before it reaches you.</p>
 
-      <form id="notify-form" onsubmit="return false;">
-        <input type="email" id="notify-email" placeholder="you@company.com" required>
-        <button type="submit" id="notify-btn">Notify me</button>
-      </form>
-      <p class="note">Nothing's live yet — this domain was just claimed. Want early access or have thoughts on what this should be? <a href="mailto:itaibm@gmail.com?subject=ClawReports%20—%20early%20access">Email itai directly</a>.</p>
+      <div class="cta-row">
+        <a class="btn" href="mailto:itaibm@gmail.com?subject=ClawReports%20—%20request%20a%20report">Request a report →</a>
+      </div>
+      <p class="note" style="margin-top:16px;">Have a subject, a company, or a family line to research? <a href="mailto:itaibm@gmail.com?subject=ClawReports%20—%20request%20a%20report">Email itai directly</a> to scope it.</p>
     </div>
 
     <div class="panel">
       <div class="panel-head">
-        <span>WEEK_37.LOG</span>
-        <span>AUTO-GENERATED</span>
+        <span>HOW A REPORT IS BUILT</span>
+        <span>4 STAGES</span>
       </div>
-      <div class="bars">
-        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-      </div>
-      <div class="rows">
-        <div class="row"><span class="lbl">Coverage</span><div class="track"><div class="fill" style="width:82%"></div></div></div>
-        <div class="row"><span class="lbl">Confidence</span><div class="track"><div class="fill" style="width:64%"></div></div></div>
-        <div class="row"><span class="lbl">Anomalies</span><div class="track"><div class="fill" style="width:12%; background: var(--amber);"></div></div></div>
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <div>
+            <div class="t">Collect</div>
+            <div class="d">Public and licensed sources are searched with a defined purpose and scope. No collection without consent, no untraceable dead ends.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <div>
+            <div class="t">Resolve &amp; extract</div>
+            <div class="d">Findings are tied to a single identity and turned into individually-cited claims — nothing enters the report without a source behind it.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <div>
+            <div class="t">Verify — twice</div>
+            <div class="d">Every claim is checked against its evidence, then reviewed by a second, independent AI model before anything is approved for delivery.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">4</div>
+          <div>
+            <div class="t">Deliver</div>
+            <div class="d">A narrative report with a full citation trail — plus a GEDCOM family tree file for ancestry work.</div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
+
+  <div class="services">
+    <div class="services-head">What we investigate</div>
+    <div class="cards">
+      <div class="card">
+        <div class="tag">OSINT</div>
+        <h3>Background checks</h3>
+        <p>Open-source profiles on a person or an online identity — accounts, footprint, public records — assembled from verified, cited findings only.</p>
+      </div>
+      <div class="card">
+        <div class="tag">Due diligence</div>
+        <h3>Company &amp; NGO checks</h3>
+        <p>Ownership, registration, and reputation research on a company, association, or charity before you sign, invest, or partner.</p>
+      </div>
+      <div class="card">
+        <div class="tag">Ancestry</div>
+        <h3>Family research</h3>
+        <p>Documentary family-tree research — archives, registries, genealogy sources — delivered as a narrative report plus a GEDCOM tree file. Not a DNA service.</p>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <span>© 2026 clawreports.com · clawreports.ai</span>
@@ -332,15 +402,6 @@
     el.textContent = 'Tel Aviv — ' + h + ':' + m + ':' + s;
   }
   setInterval(tick, 1000); tick();
-
-  document.getElementById('notify-form').addEventListener('submit', function(){
-    var email = document.getElementById('notify-email').value;
-    var btn = document.getElementById('notify-btn');
-    if(!email) return;
-    window.location.href = 'mailto:itaibm@gmail.com?subject=' + encodeURIComponent('ClawReports — notify: ' + email) + '&body=' + encodeURIComponent('Please notify this address when ClawReports launches: ' + email);
-    btn.textContent = 'Sent →';
-    setTimeout(function(){ btn.textContent = 'Notify me'; }, 2200);
-  });
 </script>
 </body>
 </html>
