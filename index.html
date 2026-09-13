@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ClawReports — Investigation reports, backed by evidence.</title>
-<meta name="description" content="ClawReports runs OSINT background checks, corporate due diligence, and documentary family research — every claim traced to a citation and checked by two independent AI models before delivery.">
+<meta name="description" content="ClawReports produces OSINT background checks, company due diligence, and documentary family research — every claim cited to a public source, same-name look-alikes excluded, human-reviewed before delivery. Packages from $149.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -299,6 +299,55 @@
     margin: 0;
   }
 
+  /* pricing */
+  .pricing{ padding: 20px 0 60px; border-top: 1px solid var(--line); }
+  .tiers{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 880px){ .tiers{ grid-template-columns: 1fr; } }
+  .tier{
+    background: var(--bg-panel); border: 1px solid var(--line); border-radius: 4px;
+    padding: 26px; display:flex; flex-direction:column; position: relative;
+  }
+  .tier.featured{ border-color: var(--amber-dim); box-shadow: 0 0 0 1px rgba(255,176,46,0.25) inset; }
+  .tier.featured::before{
+    content:"MOST ORDERED"; position:absolute; top:-10px; left:18px;
+    background: var(--bg); padding: 0 8px; font-family: var(--mono);
+    font-size: 10px; letter-spacing: 0.12em; color: var(--amber);
+  }
+  .tier .name{ font-family: var(--mono); font-size: 17px; color: var(--paper); margin: 0 0 6px; }
+  .tier .price{ font-family: var(--mono); font-weight: 800; font-size: 34px; color: var(--amber); letter-spacing:-0.02em; margin: 6px 0 2px; }
+  .tier .meta{ font-family: var(--mono); font-size: 11px; color: var(--paper-dim); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+  .tier ul{ list-style:none; padding:0; margin:0 0 20px; flex:1; }
+  .tier li{ font-family: var(--serif); font-size: 14px; color: var(--paper-dim); line-height:1.5; padding: 5px 0 5px 18px; position:relative; border-bottom: 1px dashed var(--line); }
+  .tier li:last-child{ border-bottom:none; }
+  .tier li::before{ content:"›"; position:absolute; left:2px; color: var(--green); font-family: var(--mono); }
+  .tier .btn{ text-align:center; }
+  .more{ margin-top: 22px; font-family: var(--serif); font-size: 14.5px; color: var(--paper-dim); line-height:1.6; }
+  .more b{ color: var(--paper); font-weight: 500; }
+  .more code{ font-family: var(--mono); font-size: 12.5px; color: var(--paper); }
+
+  /* scope */
+  .scope{ padding: 10px 0 60px; border-top: 1px solid var(--line); }
+  .two{ display:grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 880px){ .two{ grid-template-columns: 1fr; } }
+  .box{ background: var(--bg-panel); border: 1px solid var(--line); border-radius: 4px; padding: 24px 26px; }
+  .box h4{ font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 14px; }
+  .box.yes h4{ color: var(--green); } .box.no h4{ color: var(--amber); }
+  .box ul{ margin:0; padding-left: 18px; }
+  .box li{ font-family: var(--serif); font-size: 14.5px; color: var(--paper-dim); line-height:1.55; margin: 6px 0; }
+
+  /* faq */
+  .faq{ padding: 10px 0 60px; border-top: 1px solid var(--line); }
+  .faq details{ border-bottom: 1px dashed var(--line); padding: 14px 0; }
+  .faq summary{ font-family: var(--mono); font-size: 14px; color: var(--paper); cursor:pointer; list-style:none; }
+  .faq summary::before{ content:"+ "; color: var(--green); }
+  .faq details[open] summary::before{ content:"− "; }
+  .faq p{ font-family: var(--serif); font-size: 14.5px; color: var(--paper-dim); line-height:1.6; margin: 10px 0 0; max-width: 78ch; }
+
+  .legal{
+    font-family: var(--mono); font-size: 11px; color: #7a7663; line-height: 1.7;
+    border-top: 1px solid var(--line); padding: 26px 0 0; letter-spacing: 0.02em; max-width: 100ch;
+  }
+
   footer{
     padding: 30px 0 40px;
     border-top: 1px solid var(--line);
@@ -325,13 +374,13 @@
     <div>
       <p class="kicker">Investigation reports, not guesswork</p>
       <h1>Claw<br>Reports<span class="cursor"></span></h1>
-      <p class="tagline">Background checks, corporate due diligence, and documentary family research — <em>every claim traced to a citation</em>, cross-checked by two independent AI models before it reaches you.</p>
+      <p class="tagline">Background checks, company due diligence, and documentary family research — <em>every claim cited to a public source</em>, same-name look-alikes excluded, and a human review before it reaches you.</p>
 
       <div class="cta-row">
-        <a class="btn" href="mailto:itaibm@gmail.com?subject=ClawReports%20—%20request%20a%20report">Request a report →</a>
-        <a class="btn btn-outline" href="mailto:itaibm@gmail.com?subject=ClawReports%20—%20talk%20to%20sales">Talk to sales</a>
+        <a class="btn" href="#pricing">See packages →</a>
+        <a class="btn btn-outline" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20request%20a%20report">Request a report</a>
       </div>
-      <p class="note" style="margin-top:16px;">Have a subject, a company, or a family line to research? <a href="mailto:itaibm@gmail.com?subject=ClawReports%20—%20request%20a%20report">Email itai directly</a> to scope it — every report is reviewed by a human expert before it ships, not just the two AI models.</p>
+      <p class="note" style="margin-top:16px;">Send the subject, what you already know, and the decision the report supports — <a href="mailto:hello@clawreports.com?subject=ClawReports%20—%20request%20a%20report">hello@clawreports.com</a>. Scope, price and delivery date back within 2 hours (08:00–23:00 Israel time). English &amp; Hebrew.</p>
     </div>
 
     <div class="panel">
@@ -344,28 +393,28 @@
           <div class="n">1</div>
           <div>
             <div class="t">Collect</div>
-            <div class="d">Public and licensed sources are searched with a defined purpose and scope. No collection without consent, no untraceable dead ends.</div>
+            <div class="d">Public and licensed sources are searched with a stated purpose and scope. Every result, including "nothing found", is recorded with URL, date and quote.</div>
           </div>
         </div>
         <div class="step">
           <div class="n">2</div>
           <div>
             <div class="t">Resolve &amp; extract</div>
-            <div class="d">Findings are tied to a single identity and turned into individually-cited claims — nothing enters the report without a source behind it.</div>
+            <div class="d">Candidate matches are tested against the facts you gave us. Look-alikes are excluded and listed, then findings become individually-cited claims with a confidence level.</div>
           </div>
         </div>
         <div class="step">
           <div class="n">3</div>
           <div>
-            <div class="t">Verify — multiple agents</div>
-            <div class="d">Every claim is checked against its evidence, then cross-reviewed by several independent AI models on different providers — never approved on one model's word.</div>
+            <div class="t">Verify</div>
+            <div class="d">Every claim is checked against the evidence it cites by an independent reviewer. A citation that does not support its claim stops the report.</div>
           </div>
         </div>
         <div class="step">
           <div class="n">4</div>
           <div>
             <div class="t">Human expert review</div>
-            <div class="d">A person — not just the two AI models — reads flagged items and approves the case before anything reaches you.</div>
+            <div class="d">A person reads the flagged items and the identity decisions and approves the case before anything reaches you.</div>
           </div>
         </div>
         <div class="step">
@@ -399,6 +448,109 @@
       </div>
     </div>
   </div>
+
+  <div class="pricing" id="pricing">
+    <div class="services-head">Packages</div>
+    <div class="tiers">
+      <div class="tier">
+        <div class="name">Footprint Check</div>
+        <div class="price">$149</div>
+        <div class="meta">1 person · 24–48 h</div>
+        <ul>
+          <li>Identity resolution with excluded look-alikes</li>
+          <li>Usernames, accounts, domains, breach-exposure indicators</li>
+          <li>News mentions and basic registries</li>
+          <li>Cited claims table and null-result list</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20Footprint%20Check">Order</a>
+      </div>
+      <div class="tier featured">
+        <div class="name">Background Report</div>
+        <div class="price">$399</div>
+        <div class="meta">1 person · 3–5 business days</div>
+        <ul>
+          <li>Everything in Footprint Check</li>
+          <li>Corporate roles, registrations, public litigation</li>
+          <li>Sanctions / PEP / watchlist screening</li>
+          <li>Adverse media in two languages</li>
+          <li>Linked people and entities, one hop</li>
+        </ul>
+        <a class="btn" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20Background%20Report">Order</a>
+      </div>
+      <div class="tier">
+        <div class="name">Company Due Diligence</div>
+        <div class="price">$1,200</div>
+        <div class="meta">1 company or NGO · 5–7 business days</div>
+        <ul>
+          <li>Registration, status, officers, corporate tree</li>
+          <li>Filings, litigation, regulatory actions</li>
+          <li>Sanctions and adverse media on entity and people</li>
+          <li>Background checks on up to 3 key people</li>
+          <li>Red-flag list and risk matrix</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20Company%20Due%20Diligence">Order</a>
+      </div>
+    </div>
+    <p class="more">
+      <b>Also:</b> Company Snapshot <code>$249</code> (48 h) · Enhanced Background <code>$899</code> · Deal Due Diligence <code>from $2,900</code> · Family Line Report <code>$499</code> (+ GEDCOM) · Sanctions/PEP/adverse-media screen <code>$79</code> (24 h, credited if you upgrade within 14 days).
+      <br><b>Add-ons:</b> rush (half the turnaround) +50% · additional subject 70% · bilingual EN+HE report +$120 · 90-day re-check 40% · hourly research <code>$85/h</code>.
+      <br>Prices in USD. Turnaround starts when intake is complete. Two rounds of clarification included.
+    </p>
+  </div>
+
+  <div class="scope">
+    <div class="services-head">Scope</div>
+    <div class="two">
+      <div class="box yes">
+        <h4>What we do</h4>
+        <ul>
+          <li>Open-source and licensed-source research on people, companies, NGOs and family lines.</li>
+          <li>Registries, filings, court databases, sanctions lists, archives, press and social media — Israeli, EU, UK and US sources; Hebrew natively.</li>
+          <li>Cite every claim, list every exclusion, report every null result.</li>
+          <li>Pre-investment, vendor and partner onboarding, litigation support, journalism, personal safety, genealogy.</li>
+        </ul>
+      </div>
+      <div class="box no">
+        <h4>What we don't do</h4>
+        <ul>
+          <li>No surveillance, no location tracking, no "find where they live".</li>
+          <li>No bypassing logins, privacy settings, bot walls or rate limits. No non-public data.</li>
+          <li>No minors. No ex-partner or harassment cases. A lawful purpose is required at order.</li>
+          <li>Not a consumer report: not for employment, tenant, credit or insurance decisions. Not a licensed private-investigation service — we say so when your case needs one.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq">
+    <div class="services-head">Questions</div>
+    <details>
+      <summary>What does "every claim cited" actually mean?</summary>
+      <p>Each finding is one row: the claim, its confidence level (established, probable, or unresolved), and the evidence record behind it — source, URL, date accessed, quoted text. You can open every source yourself. Nothing enters the report without one.</p>
+    </details>
+    <details>
+      <summary>What if you find nothing?</summary>
+      <p>You get the null-result list: which sources were searched and returned nothing. For a lawyer or an investor that list is a finding. We never fill a gap with a guess.</p>
+    </details>
+    <details>
+      <summary>How do you avoid mixing up people with the same name?</summary>
+      <p>Before anything is written, candidate matches are tested against the facts you gave us. Every look-alike that fails is excluded and listed in the report with the reason, so you see what was ruled out. A wrong merge is the worst error a background report can make, and it is the one we build against.</p>
+    </details>
+    <details>
+      <summary>Do you use AI?</summary>
+      <p>Collection and cross-checking are tool-assisted. Every claim is verified against its evidence by an independent reviewer, and a person approves the case before delivery.</p>
+    </details>
+    <details>
+      <summary>How do I order?</summary>
+      <p>Email the subject's name, what you already know, the jurisdictions that matter, your deadline, and the decision the report supports. We confirm scope, price and delivery date within two hours. Payment upfront for 24–48 h packages, half upfront for the rest.</p>
+    </details>
+    <details>
+      <summary>Hebrew?</summary>
+      <p>Yes, natively. Reports in English, Hebrew, or both, with particular depth in the Israeli companies and associations registrars, court databases, and Hebrew-language press.</p>
+    </details>
+  </div>
+
+  <p class="legal">Open-source research only. ClawReports is not a licensed private-investigation service and does not conduct surveillance, location tracking, or access to non-public data. Reports are not consumer reports under the U.S. Fair Credit Reporting Act or equivalent laws and must not be used for employment, tenancy, credit, or insurance decisions. A lawful purpose is required at order time; requests that fail that test are declined without charge.</p>
 
   <footer>
     <span>© 2026 clawreports.com · clawreports.ai</span>
