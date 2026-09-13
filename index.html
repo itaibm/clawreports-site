@@ -343,6 +343,20 @@
   .faq details[open] summary::before{ content:"− "; }
   .faq p{ font-family: var(--serif); font-size: 14.5px; color: var(--paper-dim); line-height:1.6; margin: 10px 0 0; max-width: 78ch; }
 
+  .guarantee{
+    margin-top: 22px; display:grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  @media (max-width: 880px){ .guarantee{ grid-template-columns: 1fr; } }
+  .guarantee .g{
+    border: 1px solid var(--amber-dim); border-radius: 4px; padding: 18px 20px; background: rgba(255,176,46,0.04);
+  }
+  .guarantee .g h4{ font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin: 0 0 8px; }
+  .guarantee .g p{ font-family: var(--serif); font-size: 14.5px; color: var(--paper); line-height: 1.55; margin: 0; }
+  .capacity{ font-family: var(--mono); font-size: 12px; color: var(--paper-dim); margin-top: 18px; letter-spacing: 0.02em; }
+  .capacity b{ color: var(--green); font-weight: 500; }
+  .anchor{ font-family: var(--serif); font-size: 14.5px; color: var(--paper-dim); line-height: 1.6; margin: 0 0 22px; max-width: 80ch; }
+  .anchor b{ color: var(--paper); font-weight: 500; }
+
   .legal{
     font-family: var(--mono); font-size: 11px; color: #7a7663; line-height: 1.7;
     border-top: 1px solid var(--line); padding: 26px 0 0; letter-spacing: 0.02em; max-width: 100ch;
@@ -372,15 +386,15 @@
 
   <main>
     <div>
-      <p class="kicker">Investigation reports, not guesswork</p>
+      <p class="kicker">Know who you're dealing with before you sign</p>
       <h1>Claw<br>Reports<span class="cursor"></span></h1>
-      <p class="tagline">Background checks, company due diligence, and documentary family research — <em>every claim cited to a public source</em>, same-name look-alikes excluded, and a human review before it reaches you.</p>
+      <p class="tagline">Background checks, company due diligence, and documentary family research you can defend to a partner or counsel — <em>every claim opens to its public source</em>, every same-name look-alike is listed as excluded, and a human reviews it before it reaches you.</p>
 
       <div class="cta-row">
-        <a class="btn" href="#pricing">See packages →</a>
-        <a class="btn btn-outline" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20request%20a%20report">Request a report</a>
+        <a class="btn" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20scope%20a%20report">Get a scoped quote in 2 hours →</a>
+        <a class="btn btn-outline" href="#pricing">See packages</a>
       </div>
-      <p class="note" style="margin-top:16px;">Send the subject, what you already know, and the decision the report supports — <a href="mailto:hello@clawreports.com?subject=ClawReports%20—%20request%20a%20report">hello@clawreports.com</a>. Scope, price and delivery date back within 2 hours (08:00–23:00 Israel time). English &amp; Hebrew.</p>
+      <p class="note" style="margin-top:16px;">Send a name, what you already know, and the decision the report supports — <a href="mailto:hello@clawreports.com?subject=ClawReports%20—%20scope%20a%20report">hello@clawreports.com</a>. Two facts are enough to start. English &amp; Hebrew. Not the cheapest OSINT option you'll find; the one that shows you who was ruled out.</p>
     </div>
 
     <div class="panel">
@@ -451,50 +465,63 @@
 
   <div class="pricing" id="pricing">
     <div class="services-head">Packages</div>
+    <p class="anchor">A licensed investigator quotes weeks and <b>$600–$1,000 a day</b>. A boutique due-diligence firm quotes <b>$2,500–$12,500</b>. A $50 gig gives you links and a guess. This is the public-source layer done with investigator discipline, in days, at a price a single decision can justify.</p>
     <div class="tiers">
       <div class="tier">
         <div class="name">Footprint Check</div>
         <div class="price">$149</div>
         <div class="meta">1 person · 24–48 h</div>
         <ul>
-          <li>Identity resolution with excluded look-alikes</li>
+          <li>Identity anchored, with the Exclusion Ledger of look-alikes ruled out</li>
           <li>Usernames, accounts, domains, breach-exposure indicators</li>
           <li>News mentions and basic registries</li>
-          <li>Cited claims table and null-result list</li>
+          <li>Cited claims table and Null-Result Register</li>
+          <li>Credited in full if you upgrade within 14 days</li>
         </ul>
-        <a class="btn btn-outline" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20Footprint%20Check">Order</a>
+        <a class="btn btn-outline" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20Footprint%20Check">Get the Footprint Check</a>
       </div>
       <div class="tier featured">
-        <div class="name">Background Report</div>
+        <div class="name">Cited Background</div>
         <div class="price">$399</div>
         <div class="meta">1 person · 3–5 business days</div>
         <ul>
           <li>Everything in Footprint Check</li>
           <li>Corporate roles, registrations, public litigation</li>
-          <li>Sanctions / PEP / watchlist screening</li>
-          <li>Adverse media in two languages</li>
+          <li>Sanctions / PEP / watchlist screening, adverse media in two languages</li>
           <li>Linked people and entities, one hop</li>
+          <li>Included: source appendix spreadsheet, method statement, 15-min findings call, 30-day Watch addendum</li>
         </ul>
-        <a class="btn" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20Background%20Report">Order</a>
+        <a class="btn" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20Cited%20Background">Get the Cited Background</a>
       </div>
       <div class="tier">
-        <div class="name">Company Due Diligence</div>
+        <div class="name">Cited Due Diligence</div>
         <div class="price">$1,200</div>
         <div class="meta">1 company or NGO · 5–7 business days</div>
         <ul>
-          <li>Registration, status, officers, corporate tree</li>
-          <li>Filings, litigation, regulatory actions</li>
-          <li>Sanctions and adverse media on entity and people</li>
+          <li>Registration, status, officers, corporate tree, filings</li>
+          <li>Litigation, regulatory actions, sanctions and adverse media on entity and people</li>
           <li>Background checks on up to 3 key people</li>
           <li>Red-flag list and risk matrix</li>
+          <li>Included: source spreadsheet, method statement, findings call, 30-day Watch</li>
         </ul>
-        <a class="btn btn-outline" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20Company%20Due%20Diligence">Order</a>
+        <a class="btn btn-outline" href="mailto:hello@clawreports.com?subject=ClawReports%20—%20Cited%20Due%20Diligence">Get Cited Due Diligence</a>
       </div>
     </div>
+    <div class="guarantee">
+      <div class="g">
+        <h4>Identity-Anchor Guarantee</h4>
+        <p>Within the first 24 hours we either anchor the subject's identity from the facts you gave us, or we tell you we can't and refund in full. No report is built on a guess.</p>
+      </div>
+      <div class="g">
+        <h4>On-Time Guarantee</h4>
+        <p>Your delivery date is confirmed at order. If we miss it by more than one business day, you get 20% back.</p>
+      </div>
+    </div>
+    <p class="capacity"><b>Capacity:</b> 12 person reports and 4 company engagements per week, because a person reviews every one. Delivery dates are real.</p>
     <p class="more">
-      <b>Also:</b> Company Snapshot <code>$249</code> (48 h) · Enhanced Background <code>$899</code> · Deal Due Diligence <code>from $2,900</code> · Family Line Report <code>$499</code> (+ GEDCOM) · Sanctions/PEP/adverse-media screen <code>$79</code> (24 h, credited if you upgrade within 14 days).
-      <br><b>Add-ons:</b> rush (half the turnaround) +50% · additional subject 70% · bilingual EN+HE report +$120 · 90-day re-check 40% · hourly research <code>$85/h</code>.
-      <br>Prices in USD. Turnaround starts when intake is complete. Two rounds of clarification included.
+      <b>Also:</b> Company Snapshot <code>$249</code> (48 h) · Enhanced Background <code>$899</code> · Deal Pack <code>from $2,900</code> · Family Line Report <code>$499</code> (+ GEDCOM) · Sanctions/PEP/adverse-media Screen <code>$79</code> (24 h, credited if you upgrade within 14 days).
+      <br><b>Add-ons:</b> rush (half the turnaround) +50% · additional subject 70% · bilingual EN+HE report +$120 · 90-day re-check 40% · expert note for counsel $250 · hourly research <code>$85/h</code>.
+      <br>Prices in USD. Turnaround starts when intake is complete. Two rounds of clarification included. Payment upfront under $300, half upfront above.
     </p>
   </div>
 
@@ -542,7 +569,11 @@
     </details>
     <details>
       <summary>How do I order?</summary>
-      <p>Email the subject's name, what you already know, the jurisdictions that matter, your deadline, and the decision the report supports. We confirm scope, price and delivery date within two hours. Payment upfront for 24–48 h packages, half upfront for the rest.</p>
+      <p>Email a name, what you already know (two facts are enough), and the decision the report supports. We confirm scope, price and delivery date within two hours. Payment upfront for 24–48 h packages, half upfront for the rest.</p>
+    </details>
+    <details>
+      <summary>Why not a $50 gig?</summary>
+      <p>A $50 gig gives you links and a guess, and usually no record of what was searched. You get the Exclusion Ledger, the Null-Result Register, and a source for every line. We are not the cheapest option; we are the one that shows its work.</p>
     </details>
     <details>
       <summary>Hebrew?</summary>
